@@ -41,6 +41,7 @@ pressures = forecast["hourly"]["pressure_msl"]
 now = datetime.now()
 future = now + timedelta(hours=24)
 
+#this took a few tries and i think its right now?
 def parse_time(t): return datetime.strptime(t, "%Y-%m-%dT%H:%M")
 
 #i asked copilot how to do this but i dont understand it at all 
