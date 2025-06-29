@@ -7,9 +7,6 @@
 
 ##The following script allows a user to input their city and find out if there will be serious pressure changes in the next day
 
-##dr sprint- this code is running- however, i had to use copilot AI to help me with some parts (which i have noted below)
-#so i would still like to review what i currently have with you :)
-
 import requests
 from datetime import datetime, timedelta
 import pandas
@@ -48,7 +45,7 @@ if city:
         now = datetime.now()
         future = now + timedelta(hours=24)
 
-        #this took a few tries and i think its right now?
+       
         def parse_time(t): return datetime.strptime(t, "%Y-%m-%dT%H:%M")
 
         press_ser = pandas.Series(data=pressures, index=pandas.to_datetime(times))
