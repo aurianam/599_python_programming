@@ -12,6 +12,7 @@
 
 import requests
 from datetime import datetime, timedelta
+import pandas
 
 import streamlit
 
@@ -50,7 +51,7 @@ if city:
         #this took a few tries and i think its right now?
         def parse_time(t): return datetime.strptime(t, "%Y-%m-%dT%H:%M")
 
-        #i asked copilot how to do this but i dont understand it at all 
+        press_ser = pandas.Series(data=pressures, index=pandas.to_datetime(times))
         press24_ser = press_ser[(press_ser.index > now) & (press_ser.index <= future)]
         pressure_drop = press24_ser.iloc[0] - press24_ser.min()
 
