@@ -51,11 +51,11 @@ if city:
         def parse_time(t): return datetime.strptime(t, "%Y-%m-%dT%H:%M")
 
         #i asked copilot how to do this but i dont understand it at all 
-        start_index = next(i for i, t in enumerate(times) if parse_time(t) >= now)
-        end_index = next(i for i, t in enumerate(times) if parse_time(t) >= future)
+        press24_ser = press_ser[(press_ser.index > now) & (press_ser.index <= future)]
+        pressure_drop = press24_ser.iloc[0] - press24_ser.min()
 
-        pressures_next_24 = pressures[start_index:end_index+1]
-        pressure_drop = pressures_next_24[0] - min(pressures_next_24)
+        # pressures_next_24 = pressures[start_index:end_index+1]
+        # pressure_drop = pressures_next_24[0] - min(pressures_next_24)
 
         # Report result
         # print(f"\n Forecasted pressure drop in next 24 hrs: {pressure_drop:.2f} hPa")
@@ -70,10 +70,5 @@ if city:
         else:
             streamlit.success("✅ No major pressure changes expected.")
 
-    #feauture 2 - streamlit
+    
 
-# import streamlit
-
-# streamlit.title("Pressure changes check for sensitive individuals")
-# streamlit.write("Please type a city close to you so that we can check for pressure changes.")
-# city = streamlit.text_input("City: ")
